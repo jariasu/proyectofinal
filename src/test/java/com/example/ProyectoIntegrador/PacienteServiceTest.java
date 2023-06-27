@@ -49,10 +49,9 @@ class PacienteServiceTest {
     @Test
     @Order(1)
     public void guardarPacienteTestDatos() throws Exception {
-        // Uso de pacientes creados en el setup()
+     
         Paciente pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);
 
-        // Assert
         assertThat(pacienteGuardado).isNotNull();
         assertThat(pacienteGuardado.getId()).isNotNull();
         assertThat(pacienteGuardado.getNombre()).isEqualTo(pacienteAGuardar.getNombre());
@@ -71,7 +70,6 @@ class PacienteServiceTest {
     public void actualizarPacienteTestDatosDistintos() throws Exception {
 
 
-        // Modificación de pacienteExistente ...
 
         pacienteAGuardar.setId(1L);
         pacienteAGuardar.setNombre("Ana Maria");
@@ -86,7 +84,7 @@ class PacienteServiceTest {
 
         Paciente pacienteActualizado = pacienteService.actualizarPaciente(pacienteAGuardar);
 
-        // Assert
+
         assertThat(pacienteActualizado).isNotNull();
         assertThat(pacienteActualizado.getId()).isEqualTo(pacienteAGuardar.getId());
         assertThat(pacienteActualizado.getNombre().equals("Ana María"));
@@ -95,13 +93,12 @@ class PacienteServiceTest {
     @Test
     @Order(3)
     public void buscarPacientePorIdTest() throws Exception {
-        // Uso de paciente creado en el setup()
+      
         Paciente pacienteGuardado = pacienteService.guardarPaciente(pacienteAGuardar);
         Long idPacienteABuscar = pacienteGuardado.getId();
 
         Paciente pacienteEncontrado = pacienteService.buscarPaciente(idPacienteABuscar);
 
-        // Assert
         assertThat(pacienteEncontrado).isNotNull();
         assertThat(pacienteEncontrado.getId()).isEqualTo(idPacienteABuscar);
         assertThat(pacienteEncontrado.getDni()).isEqualTo(pacienteAGuardar.getDni());
@@ -113,10 +110,9 @@ class PacienteServiceTest {
         Paciente pacienteActulizadoAEncontrar = pacienteService.buscarPaciente(1L);
 
 
-        // Buscar el paciente por DNI
         Paciente pacienteEncontrado = pacienteService.buscarPacientePorDNI("123");
 
-        // Verificar que el paciente encontrado sea igual al paciente guardado
+       
         assertThat(pacienteEncontrado.getApellido()).isEqualTo(pacienteActulizadoAEncontrar.getApellido());
         assertThat(pacienteEncontrado.getNombre()).isEqualTo(pacienteActulizadoAEncontrar.getNombre());
         assertThat(pacienteEncontrado.getDni()).isEqualTo(pacienteActulizadoAEncontrar.getDni());

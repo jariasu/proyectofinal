@@ -29,11 +29,11 @@ window.addEventListener('load', function () {
         try {
             const response = await fetch(url, settings);
             if (response.ok) {
-                // Si la respuesta es exitosa (código de estado 200-299)
+               
                 alert('Turno agregado exitosamente.');
                 window.location.href = '/turnos.html';
             } else {
-                // Si la respuesta no es exitosa
+              
                 alert('Ocurrió un error al agregar el turno. Por favor, intenta nuevamente.');
             }
         } catch (error) {

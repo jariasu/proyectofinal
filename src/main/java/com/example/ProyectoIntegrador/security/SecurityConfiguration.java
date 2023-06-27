@@ -30,11 +30,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/odontologo.html", "/turnos.html", "/pacientes.html", "/alta_turnos.html", "/alta_pacientes.html", "/alta_odontologos.html", "/index.html")
-                .hasRole("ADMIN") // Solo los usuarios con el rol "ADMIN" pueden acceder a estas URLs
+                .hasRole("ADMIN") 
                 .antMatchers("/index.html")
-                .hasAnyRole("USER", "ADMIN") // Los usuarios con los roles "USER" o "ADMIN" pueden acceder a esta URL
+                .hasAnyRole("USER", "ADMIN") 
                 .anyRequest()
-                .hasRole("ADMIN") // Los usuarios con el rol "ADMIN" tienen permiso para acceder a todas las demás URLs
+                .hasRole("ADMIN")
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(authenticationEntryPoint)

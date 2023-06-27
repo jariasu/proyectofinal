@@ -18,7 +18,7 @@ public interface TurnoRepository extends JpaRepository<Turno, Long> {
     List<Turno> findByOdontologo(Odontologo odontologo);
     List<Turno> findByPaciente(Paciente paciente);
 
-    //Se creo esto xq no se eliminaba el turno
+
     @Modifying
     @Query("DELETE FROM Turno t WHERE t.id = :id")
     void eliminarPorId(@Param("id") Long id);
